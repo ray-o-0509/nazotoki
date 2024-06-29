@@ -1,0 +1,108 @@
+@charset "UTF-8";
+body {
+  background-clip: border-box;
+  background-origin: border-box;
+  background-position: center;
+  background-repeat: no-repeat; /* リピートしない */
+  background-size: cover;
+}
+
+.tower_outer_div {
+  width: 85vw;
+  -webkit-backdrop-filter: blur(18px);
+          backdrop-filter: blur(18px);
+  min-height: 60vh;
+  padding: 100px 0;
+  background-color: rgba(255, 255, 255, 0.384);
+  margin: 10vh auto;
+  border-radius: 42px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.tower_outer_div .back_button_div {
+  position: absolute;
+  top: 50%;
+  left: 50px;
+}
+.tower_outer_div .back_button_div .back_button_image {
+  width: 40px;
+}
+.tower_outer_div .inner_divs {
+  padding: 20px 100px;
+  text-align: left;
+}
+.tower_outer_div .inner_divs a {
+  text-decoration: none;
+}
+.tower_outer_div .left_div .tower_title_image {
+  width: 100%;
+  max-width: 300px;
+}
+.tower_outer_div .left_div .dics_text_tower {
+  font-family: "MadokaPixelicaRegular";
+  font-size: 16px;
+  width: 320px;
+  line-height: 2;
+  text-align: left;
+  color: #391E01;
+}
+.tower_outer_div .right_div .button_label {
+  margin: 100px 0px 20px;
+  font-size: 20px;
+  line-height: 1;
+  color: #391E01;
+}
+.tower_outer_div .right_div .tower_buttons {
+  width: -moz-min-content;
+  width: min-content;
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.384);
+  box-shadow: 3px 3px 14px 0px rgba(0, 0, 0, 0.168627451);
+  display: flex;
+  border-radius: 10px;
+  align-items: center;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.tower_outer_div .right_div .tower_buttons:hover {
+  background-color: rgba(255, 255, 255, 0.184);
+  box-shadow: 3px 3px 14px 0px rgba(0, 0, 0, 0);
+}
+.tower_outer_div .right_div .tower_buttons .button_text {
+  margin: 0 50px;
+  font-size: 20px;
+  line-height: 1;
+  color: #391E01;
+  width: -moz-max-content;
+  width: max-content;
+}
+.tower_outer_div .right_div .tower_buttons .button_daikei {
+  display: inline-block;
+  font-size: 16px;
+  padding: 0.8em 1.6em 0.4em 0.8em;
+  position: relative;
+  color: #fff;
+  z-index: 1;
+}
+.tower_outer_div .right_div .tower_buttons .button_daikei::before {
+  content: "";
+  position: absolute;
+  border-radius: 0 10px 10px 0;
+  top: -8;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: #B04A43;
+  transform: scaleY(1.3) perspective(0.6em) rotateX(5deg);
+  transform-origin: bottom right;
+}
+.tower_outer_div .right_div .tower_buttons .button_daikei .arraw_image {
+  padding: 0 0 0px 20px;
+  width: 50px;
+}/*# sourceMappingURL=towers.css.map */

@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'Makinas';
+    src: url("../fonts/Makinas-4-Square.otf");
+}
+
+body {
+    margin: 0;
+    font-family: 'Makinas';
+    text-align: center;
+    background: #333;
+    color: white;
+    .order_text {
+        font-size: 30px;
+        text-align: center;
+        color: white;
+        margin: 100px auto;
+        width: 830px;
+        line-height: 2;
+    }
+    table {
+        text-align: center;
+        margin: 100px auto;
+        tr {
+            td {
+                width: 100px;
+                height: 100px;
+                background-color: white;
+                p {
+                    font-size: 30px;
+                    color: #333;
+                }
+                .input_area {
+                    width: 100%;
+                    height: 100%;
+                    font-size: 30px;
+                    color: #333;
+                    text-align: center;
+                    font-family: 'Makinas';
+                    border: none;
+                }
+            }
+            .c_td {
+                width: 90px;
+                height: 90px;
+            }
+            .c_red {
+                border: 5px solid red;
+            }
+            .c_blue {
+                border: 5px solid blue;
+            }
+            .c_pink {
+                border: 5px solid #EF8CFF;
+            }
+            .c_yellow {
+                border: 5px solid yellow;
+            }
+            .c_gray {
+                border: 5px solid gray;
+            }
+            .c_green {
+                border: 5px solid green;
+            }
+            .c_orange {
+                border: 5px solid orange;
+            }
+            .c_lightBlue {
+                border: 5px solid cyan;
+            }
+        }
+    }
+    .check_answer_button {
+        width: 100px;
+        height: 20px;
+        font-size: 20px;
+        padding: 20px 40px;
+        margin: 30px auto 100px;
+        color: #333;
+        background-color: white;
+        cursor: pointer;
+    }
+}

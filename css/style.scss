@@ -1,0 +1,104 @@
+@font-face {
+    font-family: 'Makinas';
+    src: url('../fonts/Makinas-4-Square.otf');
+}
+
+@font-face {
+    font-family: 'MadokaPixelicaRegular';
+    src: url('../fonts/MadokaPixelicaRegular-GOdrA.ttf');
+}
+
+
+body {
+    margin: 0;
+    font-family: 'Makinas';
+    .top_section {
+        padding: 200px 50px;
+        background: url('../img/bg.jpeg');
+        text-align: center;
+        h1 {
+            font-size: 50px;
+            color: #391E01;
+        }
+        ul {
+            li {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 30px 0;
+                p {
+                    font-size: 20px;
+                    letter-spacing: 6px;
+                    margin: 0 20px;
+                }
+                a {
+                    text-decoration: none;
+                    .find_button {
+                        background: rgba(255, 255, 255, 0.7);
+                        padding: 10px 30px;
+                        border-radius: 3px;
+                        p {
+                            color: #391E01;
+                            margin: 0;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .second_section {
+        padding: 100px 50px;
+        background: #123752;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .portal_div,
+        .door_div {
+            margin: 20px 0;
+            text-align: center;
+            .portal_img {
+                width: 500px;
+            }
+            .door_img {
+                width: 440px;
+                height: 240px;
+                object-fit: cover;
+            }
+            p {
+                color: white;
+                font-size: 30px;
+                letter-spacing: 5px;
+            }
+        }
+    }
+}
+
+.order_text {
+    font-size: 30px;
+    text-align: center;
+    color: #391E01;
+    margin: 100px auto;
+    width: 830px;
+    line-height: 2;
+}
+
+.question_img {
+    width: 80vw;
+    margin: 50px 10vw;
+}
+
+
+
+.done_section {
+    margin: 200px auto;
+    text-align: center;
+    color: white;
+    .first_title {
+        font-size: 40px;
+        margin-bottom: 100px;
+    }
+    .second_title {
+        font-size: 30px;
+    }
+}
