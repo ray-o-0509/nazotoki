@@ -5,6 +5,7 @@ body {
   background-position: center;
   background-repeat: no-repeat; /* リピートしない */
   background-size: cover;
+  text-align: center;
 }
 
 .tower_outer_div {
@@ -105,4 +106,9 @@ body {
 .tower_outer_div .right_div .tower_buttons .button_daikei .arraw_image {
   padding: 0 0 0px 20px;
   width: 50px;
+}
+
+.question_img {
+  width: 80vw;
+  margin: 100px auto;
 }/*# sourceMappingURL=towers.css.map */

@@ -4,6 +4,7 @@ body{
     background-position: center;
     background-repeat: no-repeat; /* リピートしない */
     background-size: cover;  
+    text-align: center;
 }
 
 // tower
@@ -107,4 +108,9 @@ body{
         }
         
     }
+}
+
+.question_img{
+    width: 80vw;
+    margin: 100px auto;
 }
