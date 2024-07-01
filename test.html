@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Smooth Scroll Demo</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        .map_outer_div {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            border: 1px solid black;
+        }
+        .map_inner_div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .large_content {
+            width: 200vw;
+            height: 200vh;
+            background-color: lightgrey;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="map_outer_div">
+        <div class="large_content" id="largeContent">
+            <div class="map_inner_div" id="mapInnerDiv"></div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            let velocityX = 0, velocityY = 0, positionX = 0, positionY = 0;
+            let smoothX = 0, smoothY = 0, vmin = 0, offsetX = 0, offsetY = 0;
+            let lastMove = 0, lastUpdate = 0;
+            const innerDiv = document.getElementById("mapInnerDiv");
+            const largeContent = document.getElementById("largeContent");
+
+            function updateVmin() {
+                vmin = Math.min(window.innerWidth, window.innerHeight) / 100;
+                offsetX = window.innerWidth / (2 * vmin);
+                offsetY = window.innerHeight / (2 * vmin);
+            }
+
+            function animate() {
+                const now = Date.now();
+                const delta = (now - lastUpdate) * 0.1;
+                lastUpdate = now;
+
+                smoothX += (positionX - smoothX) * 0.2;
+                smoothY += (positionY - smoothY) * 0.2;
+
+                innerDiv.style.transform = `translate(${(offsetX - smoothX) * vmin}px, ${(offsetY - smoothY) * vmin}px)`;
+                window.requestAnimationFrame(animate);
+            }
+
+            document.addEventListener("wheel", (event) => {
+                const now = Date.now();
+                const delta = (now - lastMove) * 0.3 * vmin;
+                lastMove = now;
+
+                velocityX += event.deltaX / delta;
+                velocityY += event.deltaY / delta;
+
+                positionX += velocityX;
+                positionY += velocityY;
+
+                // Clamp positionX and positionY to keep the content within bounds
+                positionX = Math.max(0, Math.min(positionX, largeContent.offsetWidth / vmin - window.innerWidth / vmin));
+                positionY = Math.max(0, Math.min(positionY, largeContent.offsetHeight / vmin - window.innerHeight / vmin));
+
+                event.preventDefault();
+            }, { passive: false });
+
+            let isDragging = false;
+            let lastX, lastY;
+
+            document.addEventListener("pointerdown", (event) => {
+                isDragging = true;
+                velocityX = velocityY = 0;
+                lastX = event.pageX;
+                lastY = event.pageY;
+            });
+
+            document.addEventListener("pointermove", (event) => {
+                if (!isDragging) return;
+
+                const now = Date.now();
+                const delta = (now - lastMove) * 0.15 * vmin;
+                lastMove = now;
+
+                velocityX = -(event.pageX - lastX) / delta;
+                velocityY = -(event.pageY - lastY) / delta;
+
+                positionX += velocityX;
+                positionY += velocityY;
+
+                // Clamp positionX and positionY to keep the content within bounds
+                positionX = Math.max(0, Math.min(positionX, largeContent.offsetWidth / vmin - window.innerWidth / vmin));
+                positionY = Math.max(0, Math.min(positionY, largeContent.offsetHeight / vmin - window.innerHeight / vmin));
+
+                lastX = event.pageX;
+                lastY = event.pageY;
+                event.preventDefault();
+            }, { passive: false });
+
+            document.addEventListener("pointerup", () => {
+                isDragging = false;
+            });
+
+            window.addEventListener("resize", updateVmin);
+            updateVmin();
+            animate();
+        });
+    </script>
+</body>
+</html>

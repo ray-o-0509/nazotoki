@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Device Orientation and Compass Example</title>
+    <style>
+        #compass-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #compass {
+            width: 200px;
+            height: 200px;
+            transition: transform 0.5s;
+        }
+        #output {
+            font-size: 1.5em;
+            text-align: center;
+        }
+        #congrats {
+            display: none;
+            font-size: 2em;
+            color: green;
+            text-align: center;
+        }
+        #resetButton {
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="compass-container">
+        <img id="compass" src="https://upload.wikimedia.org/wikipedia/commons/8/88/Simple_compass_rose.svg" alt="Compass">
+    </div>
+    <div id="output">
+        <p>Alpha: <span id="alpha">0</span></p>
+        <p>Beta: <span id="beta">0</span></p>
+        <p>Gamma: <span id="gamma">0</span></p>
+    </div>
+    <button id="resetButton">リセット</button>
+    <div id="congrats">おめでとう！すべての目標角度をクリアしました！</div>
+
+    <script>
+        let lastAlpha = null;
+        const vibrationDuration = 200; // 200ミリ秒の振動
+        const rotationThreshold = 5; // 5度の誤差まで許容
+
+        // 目標角度とその順序
+        const targetAngles = [75, -90, 30, -150];
+        let currentTargetIndex = 0;
+
+        function reset() {
+            lastAlpha = null;
+            currentTargetIndex = 0;
+            document.getElementById('congrats').style.display = 'none';
+        }
+
+        function checkRotation(alpha) {
+            if (lastAlpha === null) {
+                lastAlpha = alpha;
+                return;
+            }
+
+            let delta = alpha - lastAlpha;
+            if (delta > 180) delta -= 360;
+            if (delta < -180) delta += 360;
+
+            let targetAngle = targetAngles[currentTargetIndex];
+            if (Math.abs(targetAngle - alpha) <= rotationThreshold) {
+                navigator.vibrate(vibrationDuration);
+                currentTargetIndex++;
+                if (currentTargetIndex >= targetAngles.length) {
+                    document.getElementById('congrats').style.display = 'block';
+                    reset();
+                } else {
+                    lastAlpha = null; // 目標に到達したら、次の目標のためにリセット
+                }
+            } else {
+                lastAlpha = alpha;
+            }
+        }
+
+        function updateCompass(alpha) {
+            const compass = document.getElementById('compass');
+            compass.style.transform = `rotate(${-alpha}deg)`;
+        }
+
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', function(event) {
+                var alpha = event.alpha; // デバイスの回転角度（Z軸）
+                var beta = event.beta;   // デバイスの前後の傾き（X軸）
+                var gamma = event.gamma; // デバイスの左右の傾き（Y軸）
+
+                document.getElementById('alpha').innerText = alpha.toFixed(2);
+                document.getElementById('beta').innerText = beta.toFixed(2);
+                document.getElementById('gamma').innerText = gamma.toFixed(2);
+
+                updateCompass(alpha);
+                checkRotation(alpha);
+            });
+        } else {
+            alert('DeviceOrientation APIはこのデバイスではサポートされていません。');
+        }
+
+        document.getElementById('resetButton').addEventListener('click', reset);
+    </script>
+</body>
+</html>

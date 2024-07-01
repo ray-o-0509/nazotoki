@@ -102,3 +102,21 @@ body {
         font-size: 30px;
     }
 }
+
+
+
+.map_outer_div{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: scroll;
+    .map_innner_div{
+        width: 300vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        .map_image{
+            width: 100%;
+        }
+    }
+}

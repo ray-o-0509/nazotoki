@@ -98,4 +98,20 @@ body .second_section .door_div p {
 }
 .done_section .second_title {
   font-size: 30px;
+}
+
+.map_outer_div {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: scroll;
+}
+.map_outer_div .map_innner_div {
+  width: 300vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.map_outer_div .map_innner_div .map_image {
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */
