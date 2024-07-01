@@ -33,7 +33,7 @@
 </head>
 <body>
     <div id="compass-container">
-        <img id="compass" src="https://upload.wikimedia.org/wikipedia/commons/8/88/Simple_compass_rose.svg" alt="Compass">
+        <img id="compass" src="https://img.freepik.com/free-vector/compass-design_1174-3.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1719705600&semt=sph" alt="Compass">
     </div>
     <div id="output">
         <p>Alpha: <span id="alpha">0</span></p>
@@ -106,6 +106,33 @@
         }
 
         document.getElementById('resetButton').addEventListener('click', reset);
+
+        // デバッグ用のメッセージ
+        console.log("DeviceOrientationEventサポート: ", window.DeviceOrientationEvent ? "あり" : "なし");
+
+        // パーミッションをリクエスト（iOSデバイスの場合）
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+            DeviceOrientationEvent.requestPermission().then(permissionState => {
+                if (permissionState === 'granted') {
+                    window.addEventListener('deviceorientation', function(event) {
+                        var alpha = event.alpha;
+                        var beta = event.beta;
+                        var gamma = event.gamma;
+
+                        document.getElementById('alpha').innerText = alpha.toFixed(2);
+                        document.getElementById('beta').innerText = beta.toFixed(2);
+                        document.getElementById('gamma').innerText = gamma.toFixed(2);
+
+                        updateCompass(alpha);
+                        checkRotation(alpha);
+                    });
+                } else {
+                    alert('DeviceOrientationのパーミッションが拒否されました。');
+                }
+            }).catch(console.error);
+        } else {
+            alert('DeviceOrientationのパーミッションリクエストがサポートされていません。');
+        }
     </script>
 </body>
 </html>
