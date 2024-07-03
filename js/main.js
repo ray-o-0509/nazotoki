@@ -51,3 +51,86 @@ function check_pw() {
         alert('回答が間違っています。※半角で入力してない場合も表示されます。');
     }
 }
+
+
+$(document).ready(function () {
+    const $map = $('.map_innner_div');
+    const containerWidth = $('.map_outer_div').width();
+    const containerHeight = $('.map_outer_div').height();
+    const mapWidth = $map.width();
+    const mapHeight = $map.height();
+    let mapX = 0;
+    let mapY = 0;
+    const step = 5;
+    const keys = {};
+
+    const moveMap = () => {
+      if (keys['w'] && keys['a']) {
+        if (mapY + step <= 0) mapY += step;
+        if (mapX + step <= 0) mapX += step;
+      } else if (keys['w'] && keys['d']) {
+        if (mapY + step <= 0) mapY += step;
+        if (mapX - step >= containerWidth - mapWidth) mapX -= step;
+      } else if (keys['s'] && keys['a']) {
+        if (mapY - step >= containerHeight - mapHeight) mapY -= step;
+        if (mapX + step <= 0) mapX += step;
+      } else if (keys['s'] && keys['d']) {
+        if (mapY - step >= containerHeight - mapHeight) mapY -= step;
+        if (mapX - step >= containerWidth - mapWidth) mapX -= step;
+      } else if (keys['w']) {
+        if (mapY + step <= 0) mapY += step;
+      } else if (keys['a']) {
+        if (mapX + step <= 0) mapX += step;
+      } else if (keys['s']) {
+        if (mapY - step >= containerHeight - mapHeight) mapY -= step;
+      } else if (keys['d']) {
+        if (mapX - step >= containerWidth - mapWidth) mapX -= step;
+      }
+      $map.css('transform', `translate(${mapX}px, ${mapY}px)`);
+    }
+
+    let interval;
+
+    $(document).keydown(function(event) {
+      keys[event.key] = true;
+      if (!interval) {
+        interval = setInterval(moveMap, 5);
+      }
+    });
+
+    $(document).keyup(function(event) {
+      delete keys[event.key];
+      if (Object.keys(keys).length === 0) {
+        clearInterval(interval);
+        interval = null;
+      }
+    });
+
+   
+    $map.on('mousedown', function(event) {
+        isDragging = true;
+        lastX = event.clientX;
+        lastY = event.clientY;
+        event.preventDefault();  // Prevent default dragging of selected content
+      });
+
+      $(document).on('mousemove', function(event) {
+        if (isDragging) {
+          const deltaX = event.clientX - lastX;
+          const deltaY = event.clientY - lastY;
+          mapX = Math.min(0, Math.max(containerWidth - mapWidth, mapX + deltaX));
+          mapY = Math.min(0, Math.max(containerHeight - mapHeight, mapY + deltaY));
+          $map.css('transform', `translate(${mapX}px, ${mapY}px)`);
+          lastX = event.clientX;
+          lastY = event.clientY;
+        }
+      });
+
+      $(document).on('mouseup', function() {
+        isDragging = false;
+      });
+
+      $map.on('dragstart', function(event) {
+        event.preventDefault();  // Prevent default dragging behavior
+      });
+  });

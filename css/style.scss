@@ -12,41 +12,9 @@
 body {
     margin: 0;
     font-family: 'Makinas';
-    .top_section {
-        padding: 200px 50px;
-        background: url('../img/bg.jpeg');
-        text-align: center;
-        h1 {
-            font-size: 50px;
-            color: #391E01;
-        }
-        ul {
-            li {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin: 30px 0;
-                p {
-                    font-size: 20px;
-                    letter-spacing: 6px;
-                    margin: 0 20px;
-                }
-                a {
-                    text-decoration: none;
-                    .find_button {
-                        background: rgba(255, 255, 255, 0.7);
-                        padding: 10px 30px;
-                        border-radius: 3px;
-                        p {
-                            color: #391E01;
-                            margin: 0;
-                            font-size: 16px;
-                        }
-                    }
-                }
-            }
-        }
-    }
+
+    background: #123752;
+  
     .second_section {
         padding: 100px 50px;
         background: #123752;
@@ -106,17 +74,84 @@ body {
 
 
 .map_outer_div{
-    width: 100vw;
-    height: 100vh;
+    width: 90vw;
+    height: 90vh;
+    margin: 5vh 5vw;
     position: relative;
-    overflow: scroll;
+    overflow: hidden;
+    border-radius: 2vw;
     .map_innner_div{
         width: 300vw;
         position: absolute;
         top: 0;
         left: 0;
+        cursor: grab;
+        &:active {
+            cursor: grabbing;
+          }
         .map_image{
             width: 100%;
+        }
+        .towers_div{
+            width: 11vw;
+            height: calc(11vw / 129 * 338);
+            background-clip: border-box;
+            background-origin: border-box;
+            background-position: center;
+            background-repeat: no-repeat; /* リピートしない */
+            background-size: cover; 
+            position: absolute; 
+            z-index: 100;
+            transition: all .2s;
+            cursor: pointer;
+        }
+        #wind_tower{
+            top: 80vw;
+            left: 100vw;
+            background-image: url('../img/towers/wind_tower_img.png');
+            &:hover{
+                background-image: url('../img/towers/wind_tower_hover_img.png');
+            }
+        }
+        #light_tower{
+            top: 131vw;
+            left: 80vw;
+            background-image: url('../img/towers/light_tower_img.png');
+            &:hover{
+                background-image: url('../img/towers/light_tower_hover_img.png');
+            }
+        }
+        #fire_tower{
+            top: 124vw;
+            left: 197vw;
+            background-image: url('../img/towers/fire_tower_img.png');
+            &:hover{
+                background-image: url('../img/towers/fire_tower_hover_img.png');
+            }
+        }
+        #earth_tower{
+            top: 50vw;
+            left: 145vw;
+            background-image: url('../img/towers/earth_tower_img.png');
+            &:hover{
+                background-image: url('../img/towers/earth_tower_hover_img.png');
+            }
+        }
+        #shadow_tower{
+            top: 37vw;
+            left: 201vw;
+            background-image: url('../img/towers/shadow_tower_img.png');
+            &:hover{
+                background-image: url('../img/towers/shadow_tower_hover_img.png');
+            }
+        }
+        #water_tower{
+            top: 166vw;
+            left: 129vw;
+            background-image: url('../img/towers/water_tower_img.png');
+            &:hover{
+                background-image: url('../img/towers/water_tower_hover_img.png');
+            }
         }
     }
 }
