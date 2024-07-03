@@ -81,7 +81,7 @@ body {
     overflow: hidden;
     border-radius: 2vw;
     .map_innner_div{
-        width: 300vw;
+        width: 200vw;
         position: absolute;
         top: 0;
         left: 0;
@@ -93,8 +93,8 @@ body {
             width: 100%;
         }
         .towers_div{
-            width: 11vw;
-            height: calc(11vw / 129 * 338);
+            width: 8vw;
+            height: calc(8vw / 129 * 338);
             background-clip: border-box;
             background-origin: border-box;
             background-position: center;
@@ -106,48 +106,48 @@ body {
             cursor: pointer;
         }
         #wind_tower{
-            top: 80vw;
-            left: 100vw;
+            top: 50vw;
+            left: 66.6vw;
             background-image: url('../img/towers/wind_tower_img.png');
             &:hover{
                 background-image: url('../img/towers/wind_tower_hover_img.png');
             }
         }
         #light_tower{
-            top: 131vw;
-            left: 80vw;
+            top: 86.2vw;
+            left: 53vw;
             background-image: url('../img/towers/light_tower_img.png');
             &:hover{
                 background-image: url('../img/towers/light_tower_hover_img.png');
             }
         }
         #fire_tower{
-            top: 124vw;
-            left: 197vw;
+            top: 81vw;
+            left: 131vw;
             background-image: url('../img/towers/fire_tower_img.png');
             &:hover{
                 background-image: url('../img/towers/fire_tower_hover_img.png');
             }
         }
         #earth_tower{
-            top: 50vw;
-            left: 145vw;
+            top: 33vw;
+            left: 96vw;
             background-image: url('../img/towers/earth_tower_img.png');
             &:hover{
                 background-image: url('../img/towers/earth_tower_hover_img.png');
             }
         }
         #shadow_tower{
-            top: 37vw;
-            left: 201vw;
+            top: 23.6vw;
+            left: 134vw;
             background-image: url('../img/towers/shadow_tower_img.png');
             &:hover{
                 background-image: url('../img/towers/shadow_tower_hover_img.png');
             }
         }
         #water_tower{
-            top: 166vw;
-            left: 129vw;
+            top: 110vw;
+            left: 86vw;
             background-image: url('../img/towers/water_tower_img.png');
             &:hover{
                 background-image: url('../img/towers/water_tower_hover_img.png');
