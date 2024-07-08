@@ -92,6 +92,25 @@ body {
         .map_image{
             width: 100%;
         }
+        #portal_div{
+            width: 22vw;
+            height: calc(22vw / 271 * 116);
+            background-clip: border-box;
+            background-origin: border-box;
+            background-position: center;
+            background-repeat: no-repeat; /* リピートしない */
+            background-size: cover; 
+            position: absolute; 
+            z-index: 100;
+            transition: all .2s;
+            cursor: pointer;
+            top: 13vw;
+            left: 120vw;
+            background-image: url('../img/portal_img.png');
+            &:hover{
+                background-image: url('../img/portal_hover_img.png');
+            }
+        }
         .towers_div{
             width: 8vw;
             height: calc(8vw / 129 * 383);

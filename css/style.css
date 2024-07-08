@@ -90,6 +90,25 @@ body .second_section .door_div p {
 .map_outer_div .map_innner_div .map_image {
   width: 100%;
 }
+.map_outer_div .map_innner_div #portal_div {
+  width: 22vw;
+  height: 9.4169741697vw;
+  background-clip: border-box;
+  background-origin: border-box;
+  background-position: center;
+  background-repeat: no-repeat; /* リピートしない */
+  background-size: cover;
+  position: absolute;
+  z-index: 100;
+  transition: all 0.2s;
+  cursor: pointer;
+  top: 13vw;
+  left: 120vw;
+  background-image: url("../img/portal_img.png");
+}
+.map_outer_div .map_innner_div #portal_div:hover {
+  background-image: url("../img/portal_hover_img.png");
+}
 .map_outer_div .map_innner_div .towers_div {
   width: 8vw;
   height: 23.7519379845vw;
